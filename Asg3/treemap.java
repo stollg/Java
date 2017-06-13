@@ -1,0 +1,110 @@
+//Garrett Stoll gstoll@ucsc.edu
+//$Id: treemap.java,v 1.2 2015-02-18 00:42:33-08 - - $
+
+
+// Development version of treemap.
+// To be deleted and replaced by an actual implementation that
+// does *NOT* use java.util.TreeMap.
+
+import static java.lang.System.*;
+
+class treemap {
+
+   class tree {
+      String key;
+      String value;
+      tree left;
+      tree right;
+   }
+   tree root = null;
+
+   //java.util.TreeMap <String, String> tree
+     //    = new java.util.TreeMap <String, String> ();
+
+   public String get (String key) {
+      tree curr = root;
+      
+      while (curr != null) {
+        
+        int comp = curr.key.compareTo (key);
+        
+        if (comp == 0){
+           return curr.value;
+        }
+        if (comp < 0){ 
+           curr = curr.right;
+        } 
+        else{ 
+        curr = curr.left;
+        }
+     }
+      return null;
+   
+      //return tree.get (key);
+   }
+
+   public String put (String key, String value) {
+     
+     if(root == null){
+      tree tmp = new tree();
+      tmp.key = key; 
+      tmp.value = value; 
+      root = tmp;
+      
+     }
+      tree curr = root;
+      while (curr != null) {
+        int comp = curr.key.compareTo(key);
+        
+        if (comp == 0){ 
+           tree temp = curr;
+           curr.key = key;
+           curr.value = value;               
+           return temp.value;
+        }
+                
+        if (comp < 0){
+           if(curr.right != null){
+           curr = curr.right;
+           }
+           else{
+               tree temp = new tree();
+               temp.key = key; 
+               temp.value = value; 
+               curr.right = temp;
+               return null;
+           }
+        }
+        else{ 
+            if(curr.left != null){
+              curr = curr.left;
+            }
+            else{
+                 tree temp = new tree();
+                 temp.key = key; 
+                 temp.value = value; 
+                 curr.left = temp;
+                 return null;
+            }
+     }
+          
+   }
+   return null;
+   }
+      
+   
+
+   public void debug_tree () {
+      debug_tree_recur (root, 0);
+   }
+
+   private void debug_tree_recur (tree node, int depth) {
+       if(node == null)return;
+           debug_tree_recur (node.left, depth + 1);
+           out.printf("%3d \"%s\" %s %s%n", depth, node.key, 
+           node.value, node.left, node.right);
+           debug_tree_recur (node.right, depth + 1);
+       
+   }
+
+}
