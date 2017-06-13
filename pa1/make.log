@@ -1,0 +1,14 @@
+gcc  -o  graph01  graph01.o intList.o
+intList.o:(.rodata+0x0): multiple definition of `intNil'
+graph01.o:(.rodata+0x0): first defined here
+intList.o: In function `intFirst':
+/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:12: multiple definition of `intFirst'
+graph01.o:/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:12: first defined here
+intList.o: In function `intRest':
+/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:16: multiple definition of `intRest'
+graph01.o:/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:16: first defined here
+intList.o: In function `intCons':
+/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:21: multiple definition of `intCons'
+graph01.o:/afs/cats.ucsc.edu/users/g/gstoll/private/cmps101/pa1/intList.c:21: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [graph01] Error 1

@@ -1,0 +1,99 @@
+Garrett Stoll gstoll
+
+In this assignment we created a program which will read all lines 
+from input text files using C's fgets Library Function
+and prints out an adjacency list represenation of the
+graph defined in the file. It will also accept input from the user via
+stdin and return the corresponding adjacency list.
+
+In order to properly run my program the following files must be in the
+same working directory when the make command is called:
+
+graph01.c
+intList.c
+intlist.h
+Makefile
+
+once it is confirmed that all these files or in the proper directory
+
+type "make"(no quotes) into the command line.
+
+that is all that is necessary to compile.
+
+Now run the program by entering:
+
+graph01 - (for standard input)
+or
+graph01 *.data (to read input from *.data file)
+(Examples of test.data files are below.)
+////////////////////////////////////////////////////////////////////////
+Multiple testfiles are attached:
+
+test1.data
+
+INPUT:
+3
+1 4
+1 5
+2 3
+3 5
+
+OUTPUT:
+bash-4.1$ graph01 test1.data
+Opened test1.data for input.
+n = 3
+m = 4
+
+1     [5][4]
+2     [3]
+3     [5]
+
+This first test shows that if there are multiple adjacent vertices the 
+program will recognize and print them along side eachother in the right
+hand column.
+
+test2.data
+
+INPUT:
+3
+2 3
+1 1
+1 2
+
+OUTPUT:
+bash-4.1$ graph01 test2.data
+Opened test2.data for input.
+n = 3
+m = 3
+
+1     [2][1]
+2     [3]
+3     NULL
+
+This second test shows that the program will print NULL if there are no 
+vertices adjacent to the node.
+
+test3.data
+
+INPUT:
+3
+1 2
+2 4
+5 7
+7 7
+
+OUTPUT:
+bash-4.1$ graph01 test3.data
+Opened test3.data for input.
+n = 3
+Bad edge: 
+
+this last test shows the the program will return a bad edge if the 
+# of vertices exceeds the initialized amount.
+////////////////////////////////////////////////////////////////////////
+
+
+n = Number of vertices/nodes in the graph
+m = Number of edges in the graph
+Left: specifies the vertex
+Right: lists adjacent vertices.
